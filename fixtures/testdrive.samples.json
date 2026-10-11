@@ -1,0 +1,108 @@
+{
+  "provenance": "Simulation",
+  "disclaimer": "Decision support under stated simulation assumptions. Not financial advice or range guarantee.",
+  "samples": [
+    {
+      "id": "good_fit",
+      "profile_name": "Urban Commuter with Home Wallbox",
+      "inputs": {
+        "daily_commute_km": 35,
+        "weekend_trip_km": 80,
+        "home_charging_access": true,
+        "climate_zone": "Delhi NCR (Hot Summer / Mild Winter)",
+        "current_monthly_fuel_inr": 8500,
+        "offpeak_tariff_inr": 4.5
+      },
+      "outputs": {
+        "ownership_confidence_pct": 96,
+        "suitability_verdict": "STRONG_FIT",
+        "verdict_title": "An EV is an excellent fit for your daily routine",
+        "summary_reasons": [
+          "Home wallbox access covers 92% of your total weekly energy demand during low-tariff off-peak windows.",
+          "Daily commute uses only 22% of nominal battery capacity, maintaining arrival SOC comfortably above reserve.",
+          "Projected energy savings of ₹6,120 per month compared to petrol/diesel vehicle."
+        ],
+        "monthly_ev_energy_cost_inr": 2380,
+        "monthly_fuel_savings_inr": 6120,
+        "annual_savings_inr": 73440,
+        "public_charging_dependency_pct": 8,
+        "battery_stress_rating": "Low (0.16 / 1.0)",
+        "weeks_at_risk_out_of_52": 2,
+        "weekly_risk_timeline": [
+          "safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","safe",
+          "safe","safe","safe","safe","safe","safe","safe","safe","safe","mild_risk","safe","safe","safe",
+          "safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","mild_risk","safe","safe",
+          "safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","safe"
+        ]
+      }
+    },
+    {
+      "id": "borderline",
+      "profile_name": "Regional Commuter without Dedicated Home Charger",
+      "inputs": {
+        "daily_commute_km": 75,
+        "weekend_trip_km": 140,
+        "home_charging_access": false,
+        "climate_zone": "Delhi NCR (Hot Summer / Mild Winter)",
+        "current_monthly_fuel_inr": 14200,
+        "offpeak_tariff_inr": 4.5
+      },
+      "outputs": {
+        "ownership_confidence_pct": 74,
+        "suitability_verdict": "BORDERLINE",
+        "verdict_title": "Feasible with disciplined fast-charging planning",
+        "summary_reasons": [
+          "Without home charging, you will depend 100% on public DC fast chargers (averaging 3-4 sessions/week).",
+          "Peak summer heatwaves elevate HVAC consumption and may increase public station wait queues during 18:00–22:00.",
+          "Significant financial savings remain (₹8,600/month), but requires access to reliable hubs near work or transit."
+        ],
+        "monthly_ev_energy_cost_inr": 5600,
+        "monthly_fuel_savings_inr": 8600,
+        "annual_savings_inr": 103200,
+        "public_charging_dependency_pct": 100,
+        "battery_stress_rating": "Moderate (0.38 / 1.0)",
+        "weeks_at_risk_out_of_52": 14,
+        "weekly_risk_timeline": [
+          "safe","safe","mild_risk","safe","safe","safe","mild_risk","safe","safe","safe","safe","mild_risk","safe",
+          "high_risk","mild_risk","mild_risk","mild_risk","high_risk","mild_risk","safe","safe","safe","safe","safe","safe","safe",
+          "safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","mild_risk","safe","safe",
+          "safe","mild_risk","safe","safe","safe","safe","safe","safe","safe","safe","safe","safe","safe"
+        ]
+      }
+    },
+    {
+      "id": "not_suitable",
+      "profile_name": "High-Mileage Field Transit (No Home Charging)",
+      "inputs": {
+        "daily_commute_km": 165,
+        "weekend_trip_km": 280,
+        "home_charging_access": false,
+        "climate_zone": "Delhi NCR (Hot Summer / Mild Winter)",
+        "current_monthly_fuel_inr": 28000,
+        "offpeak_tariff_inr": 4.5
+      },
+      "outputs": {
+        "ownership_confidence_pct": 38,
+        "suitability_verdict": "NOT_RECOMMENDED",
+        "verdict_title": "An EV may not suit this use case right now",
+        "summary_reasons": [
+          "High daily mileage (165+ km) consumes over 75% of battery daily, creating frequent range-anxiety risk under unpredicted traffic jams.",
+          "Absence of overnight home charging forces multiple daytime DC fast stops per day, losing ~90 minutes daily in station queues.",
+          "Summer heatwaves combined with back-to-back fast charging accelerate cell thermal stress (score 0.74/1.0)."
+        ],
+        "monthly_ev_energy_cost_inr": 14800,
+        "monthly_fuel_savings_inr": 13200,
+        "annual_savings_inr": 158400,
+        "public_charging_dependency_pct": 100,
+        "battery_stress_rating": "Elevated (0.74 / 1.0)",
+        "weeks_at_risk_out_of_52": 32,
+        "weekly_risk_timeline": [
+          "high_risk","mild_risk","high_risk","high_risk","mild_risk","mild_risk","high_risk","high_risk","high_risk","high_risk","mild_risk","high_risk","high_risk",
+          "high_risk","high_risk","high_risk","high_risk","high_risk","high_risk","high_risk","mild_risk","mild_risk","high_risk","mild_risk","mild_risk","safe",
+          "safe","mild_risk","mild_risk","high_risk","high_risk","mild_risk","mild_risk","high_risk","high_risk","mild_risk","high_risk","high_risk","high_risk",
+          "high_risk","high_risk","high_risk","high_risk","mild_risk","mild_risk","mild_risk","safe","mild_risk","high_risk","high_risk","high_risk","high_risk"
+        ]
+      }
+    }
+  ]
+}

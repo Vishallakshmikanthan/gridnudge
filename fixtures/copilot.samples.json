@@ -1,0 +1,65 @@
+{
+  "provenance": "Simulation",
+  "suggested_questions": [
+    "Why was decision d_002_safety_veto blocked by safety?",
+    "Why did you nudge fewer people at 19:30 (d_003_learned_silence)?",
+    "How does GridNudge compare against Broadcast under the heatwave?",
+    "Simulate a heatwave plus an outage at Aerocity station 4"
+  ],
+  "conversations": [
+    {
+      "question": "Why was decision d_002_safety_veto blocked by safety?",
+      "answer": "Decision d_002_safety_veto for user user_delhi_2310 evaluated a delayed charging plan (start 22:30). Perception estimated an arrival SOC lower bound (q10) of 0.82, which breached the mandatory reserve threshold of 0.90 (90% confidence invariant). In accordance with AGENTS.md Rule 1.2, Safety Filter #1 executed a hard veto before the contextual bandit could evaluate the plan, preserving driver range and sending no nudge.",
+      "citations": [
+        { "type": "decision", "id": "d_002_safety_veto", "label": "Decision d_002_safety_veto" },
+        { "type": "rule", "id": "cedar_rule_01", "label": "Cedar Invariant #1" }
+      ],
+      "tools_used": [
+        "get_decision('d_002_safety_veto')",
+        "evaluate_cedar_policy(user_id='user_delhi_2310')"
+      ]
+    },
+    {
+      "question": "Why did you nudge fewer people at 19:30 (d_003_learned_silence)?",
+      "answer": "At 19:30, user user_delhi_0044 already routine-charges during the overnight off-peak window. LinTS evaluated an estimated uplift of -0.03 kWh (non-positive), meaning the user would shift charging anyway without persuasion. GridNudge selected the 'none' first-class action to preserve driver attention budget and avoid alert fatigue.",
+      "citations": [
+        { "type": "decision", "id": "d_003_learned_silence", "label": "Decision d_003_learned_silence" },
+        { "type": "metric", "id": "silent_share", "label": "Fleet Silent Share: 42.6%" }
+      ],
+      "tools_used": [
+        "get_decision('d_003_learned_silence')",
+        "query_bandit_uplift(user_id='user_delhi_0044')"
+      ]
+    },
+    {
+      "question": "How does GridNudge compare against Broadcast under the heatwave?",
+      "answer": "Under the 10-seed heatwave benchmark with common random numbers, Broadcast alerts caused a secondary rebound peak (118% feeder capacity) by herding users to the exact same 22:00 slot. GridNudge achieved 14.2% peak load reduction while keeping feeder load at 96% of capacity (0 rebound peaks) with zero stranded trips.",
+      "citations": [
+        { "type": "evaluation", "id": "policy_b4_vs_b1", "label": "Evaluation Scoreboard (10 seeds)" },
+        { "type": "metric", "id": "stranded_trips", "label": "Attributable Stranded: 0" }
+      ],
+      "tools_used": [
+        "get_evaluation_summary('heatwave')",
+        "compare_policy_metrics('B4', 'B1')"
+      ]
+    },
+    {
+      "question": "Simulate a heatwave plus an outage at Aerocity station 4",
+      "answer": "I have drafted a compound disturbance scenario preview based on your request. Please review the structured parameters below and click 'Confirm & Inject' to apply it to the digital twin.",
+      "citations": [
+        { "type": "event", "id": "compound_01", "label": "Scenario: Heatwave + Outage" }
+      ],
+      "tools_used": [
+        "generate_event_preview(events=['heatwave', 'station_outage'])"
+      ],
+      "scenario_preview": {
+        "title": "Heatwave + Aerocity Outage Compound Event",
+        "events": [
+          { "type": "heatwave", "multiplier": "1.18x", "temp_rise": "+6°C", "target": "Delhi Zone 7" },
+          { "type": "station_outage", "station_id": 4, "station_name": "Aerocity Supercharger Plaza", "offline_duration": "6 hours" }
+        ],
+        "projected_impact": "Base load rises by 1.82 MW; 150 kW DC charging capacity knocked offline; planner will re-route airport transit EVs to Saket and Dwarka."
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "provenance": "Simulation",
+  "sim_time": "2026-10-10T18:45:00+05:30",
+  "fleet": {
+    "total_evs": 2000,
+    "plugged_now": 412,
+    "charging_now": 184,
+    "waiting_queue": 12,
+    "driving_now": 620,
+    "parked_done": 772,
+    "flexible_evs": 298,
+    "inflexible_evs": 114,
+    "cohort_hourly": [
+      { "hour": "00:00", "plugged": 520, "charging": 340, "driving": 120 },
+      { "hour": "04:00", "plugged": 580, "charging": 160, "driving": 80 },
+      { "hour": "08:00", "plugged": 210, "charging": 90, "driving": 840 },
+      { "hour": "12:00", "plugged": 340, "charging": 140, "driving": 490 },
+      { "hour": "16:00", "plugged": 260, "charging": 110, "driving": 680 },
+      { "hour": "18:45", "plugged": 412, "charging": 184, "driving": 620 },
+      { "hour": "22:00", "plugged": 620, "charging": 410, "driving": 190 }
+    ]
+  },
+  "grid": {
+    "feeder_zone": "Zone 7 · Delhi Suburban",
+    "feeder_capacity_mw": 12.0,
+    "current_load_mw": 11.22,
+    "baseline_uncontrolled_mw": 15.17,
+    "solar_share_pct": 0.0,
+    "current_tariff_slot": "peak",
+    "peak_price_inr_kwh": 9.8,
+    "offpeak_price_inr_kwh": 4.5,
+    "grid_stress_window": "18:00 - 22:30",
+    "green_charging_window": "22:30 - 05:30",
+    "forecast": {
+      "seasonal_naive_peak_mw": 14.8,
+      "chronos_probabilistic_peak_mw": { "q10": 13.9, "q50": 14.6, "q90": 15.3 }
+    }
+  },
+  "battery": {
+    "stress_histogram": [
+      { "bucket": "0.0 - 0.2 (Low)", "count": 1240, "pct": 62.0 },
+      { "bucket": "0.2 - 0.4 (Moderate)", "count": 520, "pct": 26.0 },
+      { "bucket": "0.4 - 0.6 (Elevated)", "count": 180, "pct": 9.0 },
+      { "bucket": "0.6 - 0.8 (High)", "count": 52, "pct": 2.6 },
+      { "bucket": "0.8 - 1.0 (Critical)", "count": 8, "pct": 0.4 }
+    ],
+    "mean_fleet_stress": 0.23,
+    "soh_delta_simulated_range": {
+      "min_pct": -0.015,
+      "max_pct": 0.042,
+      "caption": "Relative difference under stated assumptions, not a lifespan prediction."
+    }
+  }
+}

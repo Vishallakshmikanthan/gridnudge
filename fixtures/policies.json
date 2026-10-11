@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cedar_rule_01",
+    "name": "Journey Confidence Safety Invariant",
+    "plain_language": "A charging plan is strictly forbidden and vetoed if the lower bound (q10) of predicted arrival SOC falls below the 10% reserve threshold (journey confidence lower bound < 90%).",
+    "cedar_statement": "forbid (principal, action == Action::\"SendNudge\", resource)\nwhen { context.journeyConfLbBps < 9000 };",
+    "category": "Physical Safety"
+  },
+  {
+    "id": "cedar_rule_02",
+    "name": "Physical Invariants Verification",
+    "plain_language": "All Python physical sanity invariants (energy conservation, non-negative battery capacity, valid C-rates, SOC in [0, 1]) must pass without exception before authorization.",
+    "cedar_statement": "forbid (principal, action == Action::\"SendNudge\", resource)\nunless { context.invariantsOk == true };",
+    "category": "Physical Invariant"
+  },
+  {
+    "id": "cedar_rule_03",
+    "name": "Driver Quiet Hours",
+    "plain_language": "No push notifications or nudges may be sent during late night quiet hours (23:00 to 06:00 IST), protecting drivers from sleep disruption.",
+    "cedar_statement": "forbid (principal, action == Action::\"SendNudge\", resource)\nwhen { context.quietHours == true };",
+    "category": "Human Factors"
+  },
+  {
+    "id": "cedar_rule_04",
+    "name": "Attention Fatigue Cap",
+    "plain_language": "A maximum of 3 notifications per driver per 24-hour window is enforced. Any excess persuasion attempts are suppressed to prevent notification habituation.",
+    "cedar_statement": "forbid (principal, action == Action::\"SendNudge\", resource)\nwhen { context.nudgesToday >= 3 };",
+    "category": "Human Factors"
+  },
+  {
+    "id": "cedar_rule_05",
+    "name": "User Opt-Out Consent",
+    "plain_language": "If an EV owner has opted out or muted smart charging recommendations, GridNudge immediately ceases all persuasion actions.",
+    "cedar_statement": "forbid (principal, action == Action::\"SendNudge\", resource)\nwhen { context.optedOut == true };",
+    "category": "Consent & Privacy"
+  },
+  {
+    "id": "cedar_rule_06",
+    "name": "Vehicle & Charger Compatibility",
+    "plain_language": "Nudges recommending public DC fast charging or scheduled AC start must verify vehicle connector and onboard telemetry support beforehand.",
+    "cedar_statement": "forbid (principal, action == Action::\"SendNudge\", resource)\nunless { context.vehicleSupportsPlan == true };",
+    "category": "Hardware Compatibility"
+  }
+]

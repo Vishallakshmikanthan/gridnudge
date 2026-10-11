@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Bailey et al. EV Nudge RCT",
+    "tier": "Level 1: Real Trial",
+    "category": "Behavioral Nudge Uplift",
+    "description": "Randomized controlled field experiment on EV charging price incentives vs moral suasion across 217 vehicles. Provided empirical evidence that financial incentives shift ~49% of peak charging while pro-social nudges have near-zero uplift.",
+    "license_access": "openICPSR open data repository",
+    "usage_in_gridnudge": "Simulator behavior priors and LinTS synthetic ground-truth uplift benchmarking."
+  },
+  {
+    "name": "ACN-Data (Caltech / JPL)",
+    "tier": "Level 1: Real Sessions",
+    "category": "EV Charging Sessions",
+    "description": "Public dataset of 30,000+ workplace charging sessions logging arrival time, dwell duration, kWh delivered, and charging power curves.",
+    "license_access": "CC BY 4.0 (ev.caltech.edu)",
+    "usage_in_gridnudge": "Plug-in time distributions, charging power profiles, and session duration distributions."
+  },
+  {
+    "name": "Vehicle Energy Dataset (VED & eVED)",
+    "tier": "Level 1: Real Trips",
+    "category": "Vehicle Dynamics & Range",
+    "description": "Real-world vehicle trajectory dataset with GPS, speed, elevation, and battery power logs for passenger EVs in diverse weather.",
+    "license_access": "Public Academic Dataset",
+    "usage_in_gridnudge": "Trip energy consumption calibration and Monte Carlo journey confidence model validation."
+  },
+  {
+    "name": "Oxford & NASA PCoE Battery Lab Sets",
+    "tier": "Level 1: Cell Lab Data",
+    "category": "Battery Degradation & SoH",
+    "description": "Comprehensive lithium-ion cell cycle aging datasets under varying C-rates, temperatures, and depth-of-discharge (DoD).",
+    "license_access": "NASA Ames & Oxford University Open Datasets",
+    "usage_in_gridnudge": "Semi-empirical battery stress scoring and relative cycle-life delta ranges."
+  },
+  {
+    "name": "Ministry of Power India Public EV Hubs",
+    "tier": "Level 2: Real Infrastructure",
+    "category": "Station Locations & Types",
+    "description": "Official dataset of operational public EV charging stations across Delhi NCR, including lat/lon, connector types, and rated kW.",
+    "license_access": "Dataful / data.gov.in (National Portal of India)",
+    "usage_in_gridnudge": "Geographic placement, connector counts, and fast DC charging power ratings for Delhi stations."
+  },
+  {
+    "name": "Delhi Hourly Grid Load & Weather (2018–2025)",
+    "tier": "Level 2: Real Grid Series",
+    "category": "Grid Demand & Heatwaves",
+    "description": "Multi-year hourly substation load and concurrent ambient temperature records for the National Capital Territory of Delhi.",
+    "license_access": "IEEE DataPort",
+    "usage_in_gridnudge": "Non-EV base load duck curves, evening residential AC peak modeling, and heatwave multipliers."
+  }
+]

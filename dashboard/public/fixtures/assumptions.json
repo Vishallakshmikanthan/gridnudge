@@ -1,0 +1,51 @@
+[
+  {
+    "category": "User Behavior",
+    "parameter": "Nudge Response & Uplift Prior",
+    "assumed_value": "Logit model: Cost (high sensitivity, mean +0.28), Green (near-zero, +0.02), Battery (moderate, +0.12)",
+    "rationale": "Indian EV consumer nudge trial data is not publicly available. Grounded in Bailey et al. (openICPSR) Canadian RCT and Australian EV trials where financial incentives shifted ~49% of peak charging while moral/green suasion had no statistically significant effect.",
+    "grounding_method": "Run randomized A/B trial with local DISCOM (e.g. BRPL/BYPL) or fleet telematics."
+  },
+  {
+    "category": "User Behavior",
+    "parameter": "Spontaneous Shifting Rate",
+    "assumed_value": "5%–15% baseline shift probability without any intervention",
+    "rationale": "Users occasionally charge off-peak due to routine habit or ToU awareness without receiving any nudge.",
+    "grounding_method": "Pre-intervention baseline observation from smart meter interval logs."
+  },
+  {
+    "category": "Driver Fatigue",
+    "parameter": "Alert Fatigue Decay",
+    "assumed_value": "Half-life of 3 days; daily nudge cap of 3 per driver; attention shadow price threshold",
+    "rationale": "Human factors literature on notification burnout and habituation in driver nudges.",
+    "grounding_method": "App telemetry, open rate analytics, and opt-out rate curves."
+  },
+  {
+    "category": "Infrastructure",
+    "parameter": "Station Reliability & Outages",
+    "assumed_value": "Mean Time Between Failures: 7 days; Mean Time to Repair: 4 hours per connector",
+    "rationale": "Public charging uptime in India varies by vendor; simulated based on field surveys.",
+    "grounding_method": "Real-time OCPP 1.6/2.0.1 status heartbeat telemetry feeds."
+  },
+  {
+    "category": "Safety Invariants",
+    "parameter": "Reserve State-of-Charge (SOC)",
+    "assumed_value": "Minimum target arrival SOC buffer = 10% (0.10); Journey Confidence Lower Bound >= 90%",
+    "rationale": "Safety invariant protecting EV drivers against stranding risk under traffic or weather variability.",
+    "grounding_method": "User vehicle battery settings and historical trip telematics."
+  },
+  {
+    "category": "Physics",
+    "parameter": "Journey Energy Consumption",
+    "assumed_value": "150 Wh/km nominal base consumption; +12% HVAC penalty under 42°C heatwave",
+    "rationale": "Physics-inspired vehicle dynamics calibrated for compact sedans and SUVs (Tata Nexon EV, MG ZS EV).",
+    "grounding_method": "OBD-II and CAN-bus telematics trip datasets."
+  },
+  {
+    "category": "Grid",
+    "parameter": "Distribution Feeder Capacity",
+    "assumed_value": "12.0 MW nominal feeder capacity serving 2,000 EVs in Delhi suburban zone",
+    "rationale": "11 kV / 33 kV distribution substation feeder sizing in suburban Delhi residential cluster.",
+    "grounding_method": "SCADA 15-minute feeder power logs from Delhi DISCOM."
+  }
+]

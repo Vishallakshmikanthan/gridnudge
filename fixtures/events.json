@@ -1,0 +1,52 @@
+[
+  {
+    "type": "heatwave",
+    "name": "Heatwave Disturbance",
+    "status": "active",
+    "start_sim_time": "2026-10-10T14:00:00+05:30",
+    "duration_hours": 8,
+    "params": {
+      "temperature_offset_c": 6.0,
+      "base_load_multiplier": 1.18,
+      "hvac_efficiency_loss_pct": 12.0
+    },
+    "description": "Ambient heatwave in Delhi NCR elevates non-EV baseline residential AC load by 18% and accelerates battery HVAC load during daytime commutes."
+  },
+  {
+    "type": "solar_drop",
+    "name": "Cloud Cover Solar Drop",
+    "status": "ready",
+    "start_sim_time": "2026-10-10T12:00:00+05:30",
+    "duration_hours": 4,
+    "params": {
+      "solar_reduction_factor": 0.60,
+      "green_window_reduction_hours": 2.5
+    },
+    "description": "Sudden cloud cover reduces rooftop and feeder PV output by 40%, shrinking midday green charging window and elevating midday grid stress."
+  },
+  {
+    "type": "station_outage",
+    "name": "Public Hub Outage",
+    "status": "ready",
+    "start_sim_time": "2026-10-10T16:30:00+05:30",
+    "duration_hours": 6,
+    "params": {
+      "stations_offline": [4],
+      "connector_capacity_loss_kw": 150.0
+    },
+    "description": "Feeder line maintenance knocks out Aerocity Supercharger Plaza, forcing the planner to reroute airport EVs to nearby Saket or Dwarka hubs."
+  },
+  {
+    "type": "tariff_change",
+    "name": "Dynamic Peak Tariff Surge",
+    "status": "ready",
+    "start_sim_time": "2026-10-10T18:00:00+05:30",
+    "duration_hours": 4,
+    "params": {
+      "peak_rate_multiplier": 1.5,
+      "peak_price_inr": 14.7,
+      "offpeak_price_inr": 4.5
+    },
+    "description": "DISCOM triggers emergency ToU tariff revision from ₹9.8/kWh to ₹14.7/kWh between 18:00 and 22:00 to suppress feeder overload."
+  }
+]
